@@ -2,6 +2,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { AddJobApply } from "./components/AddJobApply";
 import { Provider } from "react-redux";
 import { store } from "./redux/store";
+import { Interview } from "./components/Interview";
 
 const router = createBrowserRouter([
   {
@@ -9,8 +10,8 @@ const router = createBrowserRouter([
     element: <AddJobApply />,
   },
   {
-    path: "/home",
-    element: <div>Home</div>,
+    path: "/interview",
+    element: <Interview />,
   },
 ]);
 

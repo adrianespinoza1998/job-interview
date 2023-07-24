@@ -1,8 +1,11 @@
 import { useDispatch, useSelector } from "react-redux";
 import { JobApply, JobState } from "../types/reducersTypes";
 import { setJob } from "../redux/jobSlice";
+import { useNavigate } from "react-router-dom";
 
 export const AddJobApply = () => {
+  const navigate = useNavigate();
+
   const job: JobApply = useSelector((state: JobState) => state.job);
 
   const { jobPosition, yearsExperience, language } = job;
@@ -23,7 +26,13 @@ export const AddJobApply = () => {
 
   const submit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.log(job);
+
+    if (jobPosition !== "" && yearsExperience > 0 && language !== "") {
+      navigate("interview");
+    } else {
+      alert("Please fill all the fields");
+      console.log(job);
+    }
   };
 
   return (
@@ -76,9 +85,7 @@ export const AddJobApply = () => {
           name="language"
           onChange={handleChangeSelect}
         >
-          <option value="" selected>
-            Choose a language
-          </option>
+          <option value="">Choose a language</option>
           <option value="english">English</option>
           <option value="spanish">Spanish</option>
         </select>
