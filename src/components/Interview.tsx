@@ -3,8 +3,11 @@ import { JobApply, JobState } from "../types/reducersTypes";
 import { useEffect, useState } from "react";
 import { GptResponse } from "../utils/GptResponse";
 import { getGptContext } from "../utils/gptContext";
+import { useRecord } from "../hooks/useRecord";
 
 export const Interview = () => {
+  const { loading, startRecording, stopRecording, audio } = useRecord();
+
   const job: JobApply = useSelector((state: JobState) => state.job);
   const { jobPosition, yearsExperience, language } = job;
 
@@ -42,6 +45,15 @@ export const Interview = () => {
     firstPrompt();
   }, []);
 
+  useEffect(() => {
+    if (audio) {
+      const objectAudio = URL.createObjectURL(audio);
+      const audioElement = new Audio(objectAudio);
+
+      audioElement.play();
+    }
+  }, [audio]);
+
   return (
     <form className="p-5 mt-56" onSubmit={submit}>
       <div className="mb-6">
@@ -76,10 +88,15 @@ export const Interview = () => {
         Send
       </button>
       <button
-        className="bg-green-500 text-white px-4 py-2 mt-4 rounded-md w-full text-sm font-medium"
+        className={
+          loading
+            ? "bg-red-500 text-white px-4 py-2 mt-4 rounded-md w-full text-sm font-medium"
+            : "bg-green-500 text-white px-4 py-2 mt-4 rounded-md w-full text-sm font-medium"
+        }
         type="button"
+        onClick={loading ? stopRecording : startRecording}
       >
-        Speak
+        {loading ? "Stop" : "Record"}
       </button>
     </form>
   );
