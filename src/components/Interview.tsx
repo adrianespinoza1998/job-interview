@@ -15,8 +15,10 @@ export const Interview = () => {
   const [myResponse, setMyResponse] = useState<string>("");
   const [load, setLoad] = useState<boolean>(false);
 
-  const gptResponse = new GptResponse(
-    getGptContext(jobPosition, yearsExperience.toString(), language)
+  const [gptResponse] = useState<GptResponse>(
+    new GptResponse(
+      getGptContext(jobPosition, yearsExperience.toString(), language)
+    )
   );
 
   const submit = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -50,9 +52,13 @@ export const Interview = () => {
       audio || new File([], "")
     );
 
-    console.log(transcription);
-
     setMyResponse(transcription);
+
+    // setLoad(true);
+
+    // const response = await gptResponse.getResponse(transcription);
+    // setAiResponse(response);
+    // setLoad(false);
   };
 
   useEffect(() => {

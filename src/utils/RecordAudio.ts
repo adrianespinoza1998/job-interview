@@ -17,8 +17,6 @@ export class RecordAudio {
 
           this.mediaRecorder.addEventListener("stop", () => {
             const audioBlob = new Blob(this.audioChunks, { type: "audio/wav" });
-            this.audioChunks = [];
-
             resolve(audioBlob);
           });
         })
@@ -30,5 +28,6 @@ export class RecordAudio {
 
   stopRecording() {
     this.mediaRecorder?.stop();
+    this.audioChunks = [];
   }
 }
