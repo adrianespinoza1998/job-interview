@@ -45,12 +45,19 @@ export const Interview = () => {
     firstPrompt();
   }, []);
 
+  const fetchTranscription = async () => {
+    const transcription = await gptResponse.getTranscription(
+      audio || new File([], "")
+    );
+
+    console.log(transcription);
+
+    setMyResponse(transcription);
+  };
+
   useEffect(() => {
     if (audio) {
-      const objectAudio = URL.createObjectURL(audio);
-      const audioElement = new Audio(objectAudio);
-
-      audioElement.play();
+      fetchTranscription();
     }
   }, [audio]);
 
