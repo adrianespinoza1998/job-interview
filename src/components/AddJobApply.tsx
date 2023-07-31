@@ -31,7 +31,7 @@ export const AddJobApply = () => {
       navigate("interview");
     } else {
       alert("Please fill all the fields");
-      console.log(job);
+      // console.log(job);
     }
   };
 

@@ -17,7 +17,8 @@ export const Interview = () => {
 
   const [gptResponse] = useState<GptResponse>(
     new GptResponse(
-      getGptContext(jobPosition, yearsExperience.toString(), language)
+      getGptContext(jobPosition, yearsExperience.toString(), language),
+      language
     )
   );
 
@@ -28,6 +29,12 @@ export const Interview = () => {
     const response = await gptResponse.getResponse(myResponse);
     setAiResponse(response);
     setLoad(false);
+
+    // const utterance = new SpeechSynthesisUtterance();
+    // utterance.text = response;
+    // utterance.voice = window.speechSynthesis.getVoices()[0];
+
+    // window.speechSynthesis.speak(utterance);
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
@@ -38,7 +45,10 @@ export const Interview = () => {
 
   const firstPrompt = async () => {
     setLoad(true);
-    const response = await gptResponse.getResponse("Hello, how are you?");
+    const response = await gptResponse.getResponse(
+      language === "english" ? "Hello, how are you?" : "Hola, ¿Como estas?"
+    );
+
     setAiResponse(response);
     setLoad(false);
   };
