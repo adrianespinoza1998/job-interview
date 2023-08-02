@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { GptResponse } from "../utils/GptResponse";
 import { getGptContext } from "../utils/gptContext";
 import { useRecord } from "../hooks/useRecord";
+import { Speaker } from "../utils/Speaker";
 
 export const Interview = () => {
   const { loading, startRecording, stopRecording, audio } = useRecord();
@@ -22,6 +23,8 @@ export const Interview = () => {
     )
   );
 
+  const [speaker] = useState<Speaker>(new Speaker());
+
   const submit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setLoad(true);
@@ -30,11 +33,7 @@ export const Interview = () => {
     setAiResponse(response);
     setLoad(false);
 
-    // const utterance = new SpeechSynthesisUtterance();
-    // utterance.text = response;
-    // utterance.voice = window.speechSynthesis.getVoices()[0];
-
-    // window.speechSynthesis.speak(utterance);
+    speaker.speak(response, language);
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
@@ -51,6 +50,8 @@ export const Interview = () => {
 
     setAiResponse(response);
     setLoad(false);
+
+    speaker.speak(response, language);
   };
 
   useEffect(() => {
@@ -63,12 +64,6 @@ export const Interview = () => {
     );
 
     setMyResponse(transcription);
-
-    // setLoad(true);
-
-    // const response = await gptResponse.getResponse(transcription);
-    // setAiResponse(response);
-    // setLoad(false);
   };
 
   useEffect(() => {
