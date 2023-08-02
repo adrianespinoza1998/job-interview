@@ -78,7 +78,7 @@ export const Interview = () => {
   }, [audio]);
 
   return (
-    <form className="p-5 mt-56" onSubmit={submit}>
+    <form className="p-5 sm:px-12 md:px-36 mt-52" onSubmit={submit}>
       <div className="mb-6">
         <textarea
           value={load ? "Loading..." : aiResponse}
@@ -104,23 +104,25 @@ export const Interview = () => {
           rows={3}
         />
       </div>
-      <button
-        className="bg-blue-500 text-white px-4 py-2 mt-4 rounded-md w-full text-sm font-medium"
-        type="submit"
-      >
-        Send
-      </button>
-      <button
-        className={
-          loading
-            ? "bg-red-500 text-white px-4 py-2 mt-4 rounded-md w-full text-sm font-medium"
-            : "bg-green-500 text-white px-4 py-2 mt-4 rounded-md w-full text-sm font-medium"
-        }
-        type="button"
-        onClick={loading ? stopRecording : startRecording}
-      >
-        {loading ? "Stop" : "Record"}
-      </button>
+      <div className="sm:flex gap-2 justify-center items-center">
+        <button
+          className="bg-blue-500 text-white px-4 py-2 mt-4 rounded-md w-full sm:w-32 text-sm font-medium"
+          type="submit"
+        >
+          Send
+        </button>
+        <button
+          className={
+            loading
+              ? "bg-red-500 text-white px-4 py-2 mt-4 rounded-md w-full sm:w-32 text-sm font-medium"
+              : "bg-green-500 text-white px-4 py-2 mt-4 rounded-md w-full sm:w-32 text-sm font-medium"
+          }
+          type="button"
+          onClick={loading ? stopRecording : startRecording}
+        >
+          {loading ? "Stop" : "Record"}
+        </button>
+      </div>
     </form>
   );
 };

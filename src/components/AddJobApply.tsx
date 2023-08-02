@@ -36,7 +36,7 @@ export const AddJobApply = () => {
   };
 
   return (
-    <form className="p-5 mt-56" onSubmit={submit}>
+    <form className="p-5 sm:px-12 md:px-36 mt-52" onSubmit={submit}>
       <div className="mb-6">
         <label
           htmlFor="job_position"
@@ -90,12 +90,14 @@ export const AddJobApply = () => {
           <option value="spanish">Spanish</option>
         </select>
       </div>
-      <button
-        className="bg-blue-500 text-white px-4 py-2 mt-4 rounded-md w-full text-sm font-medium"
-        type="submit"
-      >
-        Submit
-      </button>
+      <div className="flex justify-center items-center">
+        <button
+          className="bg-blue-500 text-white px-4 py-2 mt-4 rounded-md w-full sm:w-32 sm:content-center text-sm font-medium"
+          type="submit"
+        >
+          Submit
+        </button>
+      </div>
     </form>
   );
 };
