@@ -1,3 +1,5 @@
+// TODO: Buscar speaker que no dependa de la API de SpeechSynthesis
+
 export class Speaker {
   speaker: SpeechSynthesisUtterance;
 
