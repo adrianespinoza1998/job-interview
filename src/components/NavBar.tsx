@@ -9,7 +9,7 @@ export const NavBar = () => {
   };
 
   return (
-    <nav className="bg-white border-gray-200 dark:bg-gray-900">
+    <nav className="bg-white border-gray-200 dark:bg-gray-900 fixed top-0 left-0 w-full">
       <div className="max-w-screen-xl sm:h-16 flex flex-wrap items-center justify-between mx-auto p-4">
         <button
           type="button"

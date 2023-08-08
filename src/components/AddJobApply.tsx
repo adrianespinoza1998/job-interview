@@ -36,7 +36,7 @@ export const AddJobApply = () => {
   };
 
   return (
-    <form className="p-5 sm:px-12 md:px-36 mt-52" onSubmit={submit}>
+    <form className="p-5 sm:px-12 md:px-36 mt-40" onSubmit={submit}>
       <div className="mb-6">
         <label
           htmlFor="job_position"
