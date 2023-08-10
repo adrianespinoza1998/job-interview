@@ -31,7 +31,6 @@ export const AddJobApply = () => {
       navigate("interview");
     } else {
       alert("Please fill all the fields");
-      // console.log(job);
     }
   };
 
@@ -54,41 +53,43 @@ export const AddJobApply = () => {
           onChange={handleChange}
         />
       </div>
-      <div className="mb-6">
-        <label
-          htmlFor="years_experience"
-          className="block mb-2 text-sm font-medium text-gray-600"
-        >
-          Years of experience
-        </label>
-        <input
-          className="w-full bg-zinc-200 border-2 border-zinc-200 rounded-md py-2 px-4 text-sm font-medium text-gray-600"
-          type="number"
-          placeholder="1"
-          id="years_experience"
-          value={yearsExperience}
-          name="yearsExperience"
-          onChange={handleChange}
-        />
-      </div>
-      <div className="mb-6">
-        <label
-          htmlFor="language"
-          className="block mb-2 text-sm font-medium text-gray-600"
-        >
-          Language
-        </label>
-        <select
-          id="language"
-          className="w-full bg-zinc-200 border-2 border-zinc-200 rounded-md py-2 px-4 text-sm font-medium text-gray-600"
-          value={language}
-          name="language"
-          onChange={handleChangeSelect}
-        >
-          <option value="">Choose a language</option>
-          <option value="english">English</option>
-          <option value="spanish">Spanish</option>
-        </select>
+      <div className="sm:flex sm:flex justify-center sm:items-center">
+        <div className="mb-6 sm:flex-auto sm:mr-2">
+          <label
+            htmlFor="years_experience"
+            className="block mb-2 text-sm font-medium text-gray-600"
+          >
+            Years of experience
+          </label>
+          <input
+            className="w-full bg-zinc-200 border-2 border-zinc-200 rounded-md py-2 px-4 text-sm font-medium text-gray-600"
+            type="number"
+            placeholder="1"
+            id="years_experience"
+            value={yearsExperience}
+            name="yearsExperience"
+            onChange={handleChange}
+          />
+        </div>
+        <div className="mb-6 sm:flex-auto sm:ml-2">
+          <label
+            htmlFor="language"
+            className="block mb-2 text-sm font-medium text-gray-600"
+          >
+            Language
+          </label>
+          <select
+            id="language"
+            className="w-full bg-zinc-200 border-2 border-zinc-200 rounded-md py-2 px-4 text-sm font-medium text-gray-600"
+            value={language}
+            name="language"
+            onChange={handleChangeSelect}
+          >
+            <option value="">Choose a language</option>
+            <option value="english">English</option>
+            <option value="spanish">Spanish</option>
+          </select>
+        </div>
       </div>
       <div className="flex justify-center items-center">
         <button

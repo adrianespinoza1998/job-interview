@@ -5,10 +5,6 @@ export class Speaker {
 
   constructor() {
     this.speaker = new SpeechSynthesisUtterance();
-
-    speechSynthesis.getVoices().forEach((voice) => {
-      console.log(voice.name, voice.lang);
-    });
   }
 
   speak(text: string, language: string = "en-US") {

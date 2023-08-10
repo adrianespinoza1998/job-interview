@@ -5,7 +5,7 @@ export const NavBar = () => {
   const navigate = useNavigate();
 
   const toHome = () => {
-    navigate(-1);
+    navigate("/");
   };
 
   return (
